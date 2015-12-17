@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'gs-serving-web-content'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf",
+                "org.springframework:spring-tx",
+                "org.springframework.data:spring-data-elasticsearch:1.0.0.RELEASE",
+                "javax.persistence:persistence-api:1.0",
+                "org.axonframework:axon-core:$axon_version",
+                "org.axonframework:axon-integration:$axon_version"
+
+    testCompile "junit:junit",
+                "org.springframework:spring-test:4.2.3.RELEASE",
+                "com.jayway.jsonpath:json-path:2.1.0",
+                "org.axonframework:axon-test:$axon_version",
+                "org.json:json:20151123"
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+
+
